@@ -1,61 +1,78 @@
-#include <iostream> // input/output
-#include <string> // string library
-#include <vector> // vector - последовательность значений одного типа
-#include <map>
-#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
-// пользовательский тип
-struct Person {
-  string name;
-  string surname;
-  int age;
-};
+// ---------| Functions |--------- //
+// ---------| 1. Передача параметров функции по значению |--------- //
+// ---------| 2. Передача параметров функции по ссылке |--------- //
+// ---------| 3. Передача параметров функции по константной ссылке |--------- //
 
-struct Musical_Note {
-  int id;
-  string name;
-};
 
-// статическая типизация: когда мы объявляем переменную, мы должны задать ей тип
-int main() {
-  int x = 5; // целые числа
-  double p = 3.14; //дробные числа
-  bool logic = true; //логические значения
-  char symbol = 'Z'; // символы
-  string hw = "Hello, World!\n";
 
-  // vector<int> nums = {1, 3, 5, 7};
-  // cout << nums.size() ;
+ /*
 
-  map<string, int> name_to_value;
-  name_to_value["one"] = 1;
-  name_to_value["two"] = 2;
+    1. Передача параметров функции по значению -
+    в функцию преедаются копии тех значений, которые переданы в нее при вызове
 
-  // cout << "two is " << name_to_value["two"] << "\n";
+    2. Передача параметров функции по ссылке (&, reference)-
+    нам нужно модифицировать объекты, которые мы передали
+    + это избавляет нас от копирования, сохраняя время и память
 
-  vector<Person> staff;
-  staff.push_back({"Ivan", "Ivanov", 25});
-  staff.push_back({"Petr", "Petrov", 32});
+    3. Передача параметров функции по константной ссылке (&, const reference)-
+    передача по ссылке когда нам не нужно модифицировать объект,
+    но все равно сохранить время и память
+    + мы можем принимать вызов из другой функции
+    + модификатор типа const защищает от случайных изменений
 
-  // cout << staff[0].name << "\n";
+ */
 
-  vector<Musical_Note> notes;
-  notes.push_back({1, "ДО"});
+// 1. Передача параметров функции по значению
+void ChangeInt(int x) {
+  x = 42;
+}
 
-  // cout << notes[0].name  << "\n";
-  vector<int> nums = {1, 5, 2, 92, 5};
-  string str = "abcdefg";
-  // int quantity = 0;
-  // int quantity = count(begin(nums), end(nums), 5);
-  sort(begin(nums), end(nums));
-  for (auto x : nums) {
-    cout << x << "\n";
-  //   if (x == 5) quantity++;
+// 2. Передача параметров функции по ссылке
+void Swap(int& x, int& y) {
+  int temp = x;
+  x = y;
+  y = temp;
+}
+
+void Sort(vector<int>& v) {
+  sort(begin(v), end(v));
+}
+
+// 3. Передача параметров функции по константной ссылке
+void PrintVector(const vector<int>& v) {
+  cout << "Sorted: ";
+  for (auto x : v) {
+    cout << x << " ";
   }
-  // cout << "There are a total " << quantity << " number of 5's\n";
-  // auto используется, чтобы не дублировать тип контейнера
+  cout << "\n";
+}
+
+int main() {
+  // 1. Передача параметров функции по значению
+  int x = 5;
+  ChangeInt(x);
+  cout << x << endl; // выведет 5 (передача параметров по значению)
+
+  // 2. Передача параметров функции по ссылке
+  int a = 1;
+  int b = 2;
+  Swap(a, b);
+  cout << "a == " << a << '\n'; // a == 2
+  cout << "b == " << b << '\n'; // b == 1
+
+  // 2. Передача параметров функции по ссылке
+  vector<int> nums = {3, 6, 1, 2, 0, 2};
+  Sort(nums);
+  PrintVector(nums);
+  // следующее работает только если в PrintVector предаем параметры по константной ссылке
+  // PrintVector(Sort(nums));
 
   return 0;
+
 }
