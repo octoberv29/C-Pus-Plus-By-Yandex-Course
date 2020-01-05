@@ -32,7 +32,7 @@ int main() {
   famous.erase("Tom");
 
   vector<string> v = {"a", "b", "c"};
-  set<string> s(begin(v), end(v)); 
+  set<string> s(begin(v), end(v));
 
 
   return 0;

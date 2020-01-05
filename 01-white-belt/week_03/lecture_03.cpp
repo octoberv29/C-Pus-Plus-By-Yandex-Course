@@ -4,46 +4,70 @@
 
 using namespace std;
 
+// ---------| Class |--------- //
+// ---------| Methods |--------- //
+// ---------| Constructor |--------- //
+// ---------| Destructor |--------- //
+// ---------| Public method, Private, Const method |--------- //
+
+
+
+
+/*
+    Struct - набор публичных полей
+    - используется, если контролировать консистентность не нужно
+
+    Class - скрывает данные, предоставляя определенный интерфейс доступа к ним
+    - используется, если поля связаны друг с другом и эту связь нужно контролировать
+
+    Поля делаются приватными, чтобы использование класса было более безопасным
+
+    Смысловая связб между полями класса контролируется в методах
+
+    Методы - вызываются в контексте конкретного объекта
+    + имеют доступ к приватным полям
+
+*/
+
+
 int ComputeDistance(const string& source, const string& destination) {
   return source.length() - destination.length();
 }
 
-class Route { // class вместо struct (формально ничего не изменилось)
+// class вместо struct (формально ничего не изменилось)
+class Route {
   public: // Публичная секция
+    // Constructor (констурктор по умолчанию, cоздается без параметров)
     Route() {
       source = "Moscow";
       destination = "Saint Petersburg";
       UpdateLength();
-    } // // Constructor (констурктор по умолчанию, оздается без параметров)
+    }
     // Constructor (параметризованный констурктор, параметры обязательны)
     Route(const string& new_source, const string& new_destination) {
       source = new_source;
       destination = new_destination;
       UpdateLength();
     }
+
     // Public methods
     void SetSourse(const string& new_source) {
       source = new_source;
       UpdateLength();
     }
+
     void SetDestintaion(const string& new_destination) {
       destination = new_destination;
       UpdateLength();
     }
-    string GetSource() const { // cosnst method
-      return source;
-    }
-    string GetDestination() const { //const method
-      return destination;
-    }
-    int GetLength() const { // const method
-      return length;
-    }
+
+    // const methods (+public)
+    string GetSource() const { return source; }
+    string GetDestination() const { return destination; }
+    int GetLength() const { return length; }
 
   private: // Приватная секция
-    void UpdateLength() {
-      length = ComputeDistance(source, destination);
-    }
+    void UpdateLength() { length = ComputeDistance(source, destination); }
     string source;
     string destination;
     int length;

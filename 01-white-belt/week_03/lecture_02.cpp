@@ -1,8 +1,17 @@
 #include <iostream>
 #include <string>
+#include <set>
+#include <algorithm>
 #include <vector>
+#include <cmath>
 
 using namespace std;
+
+// ---------| Struct |--------- //
+
+/*
+    struct -  создать свой тип
+*/
 
 struct Lecture {
   string title;
@@ -45,4 +54,8 @@ void CreateDetailedLecture() {
     {"C++", "White Belt", "OOP"},
     5400
   };
+}
+
+int main() {
+  return 0;
 }
