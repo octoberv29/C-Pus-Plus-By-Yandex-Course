@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 
+// TODO: доделать
 
 using namespace std;
 
