@@ -11,8 +11,6 @@ using namespace std;
 // ---------| Public method, Private, Const method |--------- //
 
 
-
-
 /*
     Struct - набор публичных полей
     - используется, если контролировать консистентность не нужно
@@ -27,6 +25,8 @@ using namespace std;
     Методы - вызываются в контексте конкретного объекта
     + имеют доступ к приватным полям
 
+    Constructor - функция, создающая объект / дефолтный объект
+
 */
 
 
@@ -37,7 +37,9 @@ int ComputeDistance(const string& source, const string& destination) {
 // class вместо struct (формально ничего не изменилось)
 class Route {
   public: // Публичная секция
-    // Constructor (констурктор по умолчанию, cоздается без параметров)
+    // Default Constructor (констурктор по умолчанию, без параметров)
+    Route() {}
+    // Default Constructor (констурктор по умолчанию, с параметрами)
     Route() {
       source = "Moscow";
       destination = "Saint Petersburg";

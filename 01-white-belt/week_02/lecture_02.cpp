@@ -8,9 +8,11 @@ using namespace std;
 
 
  /*
-    v.size() - размер вектора
-    v.resize(5) - увеличить вектор, 5 - новый размер
-    v.assign(30, true) - сделать вектор из 30 ячеек, все - true
+    v.size()                   // length of the vector
+    v.resize(5)                // increse the vector, 5 - new size
+    v.assign(30, true)         // make the vector with size=30 and all true
+    v.push_back(x)             // add an element at the end of the vector
+    v.pop_back()               // delete the last element
 
 
  */

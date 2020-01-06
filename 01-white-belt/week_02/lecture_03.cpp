@@ -9,20 +9,40 @@ using namespace std;
 
 
  /*
-     map[1] = "one";           // add element
-     map.erase(1);             // delete element by key
-     map.size();               // size of the map
-     if (map.count(1) == 0)    // check if there 0 elements of 1
+     map[1] = "one";                     // add/update value given the key
+     map.insert(make_pair(1, "one"));    // add a new key-value pair
+     cout << map[key];                     // get the value by the key
+     map.size();                         // size of the map
+     map.erase(key);                     // delete element by key
+     map.clear();                        // clear the map
+     map.empty();                        // check if the map is empty
+     if (map.count(key) == 0);           // find if the given key exists
 
-     for (const string& word : words) {
+     if (map.find(key) == map.end()) {   // check if a key is in the hash map
+     // not found
+     } else {
+     // found
+     }
+
+     if (map.count(key) > 0) {           // check if a key is in the hash map
+     // found
+     }
+
+     for (const string& word : words) {  // increment element if the key exists or create it, if it doesn't exist
         ++counters[word];
      }
 
-     for (const auto& item : m) {
+                                         // iterate the map over the pairs
+     for (auto it = map.begin(); it != map.end(); ++it) {
+      it->first, it->second
+     }
+
+
+     for (const auto& item : m) {        // iterate the map over the pairs
         item.first, item.second;
      }
 
-     for (const auto& [key, value] : m) {
+     for (const auto& [key, value] : m) {// iterate the map ver the pairs
         key, value;
      }
 

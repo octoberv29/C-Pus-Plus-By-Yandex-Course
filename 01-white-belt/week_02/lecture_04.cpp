@@ -10,10 +10,20 @@ using namespace std;
 
  /*
      set хранит только унивальные элементы
-     set.insert(x)           // add element to the set
+     set.insert(x)           // add key to the set
      set.size()              // size of the set
-     set.erase(x)            // delete an element from the set
-     set.count(x)            // count the nu,ber of occurences of x in the set
+     set.erase(x)            // delete a key from the set
+     set.clear()             // clear the set
+     set.empty()             // check if the set is empty
+
+
+     if (set.count(key) <= 0) {  // check if the key is in the hash set
+        // not found
+    }
+                            // iterate the set over the keys
+    for (auto it = set.begin(); it != set.end(); ++it) {
+        cout << (*it) << " ";
+    }
  */
 
 
