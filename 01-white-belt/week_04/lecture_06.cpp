@@ -6,6 +6,8 @@
 
 using namespace std;
 
+// ---------| Exceptions: try catch, throw |--------- //
+
 struct Date {
   int year;
   int month;
