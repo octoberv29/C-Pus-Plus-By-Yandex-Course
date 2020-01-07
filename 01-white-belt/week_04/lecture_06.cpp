@@ -13,7 +13,7 @@ struct Date {
 };
 
 void EnsureNextSymbolAndSkip(stringstream& stream) {
-  if (stream.peek() != '/') { // считать какой следуюзий символ в потоке
+  if (stream.peek() != '/') { // считать какой следующий символ в потоке
     stringstream ss;
     ss << "expected '/' , but has: '" << char(stream.peek()) << "'";
     throw runtime_error(ss.str());
