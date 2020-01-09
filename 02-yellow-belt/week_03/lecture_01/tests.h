@@ -1,4 +1,5 @@
-#pragma once // изабвляет нас от двойного включения
+#pragma once
+// изабвляет нас от двойного включения
 
 #include "test_runner.h"
 #include "synonyms.h"

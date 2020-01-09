@@ -1,4 +1,5 @@
-#pragma once // изабвляет нас от двойного включения
+#pragma once
+// изабвляет нас от двойного включения
 
 #include <string>
 #include <map>
