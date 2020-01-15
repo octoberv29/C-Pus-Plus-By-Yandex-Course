@@ -7,7 +7,8 @@
 
 using namespace std;
 
-// ---------| Iterator (итератор) |--------- //
+// ---------| Iterator (итератор) |---------
+// ---------| find_if() algorithm |--------- //
 
 
 

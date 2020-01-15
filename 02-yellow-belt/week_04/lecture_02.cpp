@@ -20,6 +20,9 @@ sort(rbegin(v), rend(v)) - отсортировать вектор по убыв
 
 */
 
+int main() {
+  return 0;
+}
 
 // auto it = find(begin(langs), end(langs), "C++");
 // langs.erase(it, end(langs));
