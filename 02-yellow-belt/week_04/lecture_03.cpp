@@ -4,6 +4,9 @@
 
 using namespace std;
 
+// ---------| Deque, Stack, Queue |--------- //
+
+
 // дек deque - если нужен вектор с эффективным добавлением/удалением из начала
 // d.push_back(x), d.pop_back()
 // d.push_front(x), d.pop_front()
