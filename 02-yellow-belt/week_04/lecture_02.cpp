@@ -117,6 +117,75 @@ void reverse_iterators() {
   cout << *it << endl;
 }
 
+void algo_partition() {
+  vector<string> langs = {"Python", "C++", "C", "Java", "C#"};
+  auto it = partition(
+    begin(langs),
+    end(langs),
+    [](const string& lang) {
+      return lang[0] == 'C';
+    }
+  );
+  PrintRange(begin(langs), it);
+}
+
+void algo_copy_if() {
+  vector<string> langs = {"Python", "C++", "C", "Java", "C#"};
+  vector<string> target(langs.size());
+  copy_if(
+    begin(langs),
+    end(langs),
+    begin(target),
+    [](const string& lang) {
+      return lang[0] == 'C';
+    }
+  );
+  PrintRange(begin(target), end(target));
+}
+
+void algo_set_intersection() {
+  set<int> a = {1, 8, 3};
+  set<int> b = {3, 6, 8};
+  vector<int> v(a.size());
+
+  auto it = set_intersection(
+    begin(a),
+    end(a),
+    begin(b),
+    end(b),
+    begin(v)
+  );
+  PrintRange(begin(v), it);
+}
+
+void iterator_back_inserter() {
+  vector<string> langs = {"Python", "C++", "C", "Java", "C#"};
+  vector<string> c_langs;
+  copy_if(
+    begin(langs),
+    end(langs),
+    back_inserter(c_langs),
+    [](const string& lang) {
+      return lang[0] == 'C';
+    }
+  );
+  PrintRange(begin(c_langs), end(c_langs));
+}
+
+void iterator_inserter() {
+  set<int> a = {1, 3, 8};
+  set<int> b = {3, 7, 8};
+  set<int> result;
+  set_intersection(
+    begin(a),
+    end(a),
+    begin(b),
+    end(b),
+    inserter(result, end(result))
+  );
+  PrintRange(begin(result), end(result));
+}
+
 int main() {
   // methods_insert_and_erase();
   // algo_remove_if();
@@ -124,9 +193,11 @@ int main() {
   // algo_min_max();
   // algo_all_off();
   // reverse_iterators();
-
-  vector<string> langs = {"Python", "C++", "C", "Java", "C#"};
-
+  // algo_partition();
+  // algo_copy_if();
+  // algo_set_intersection();
+  // iterator_back_inserter();
+  iterator_inserter();
 
 
 
