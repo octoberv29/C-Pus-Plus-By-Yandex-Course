@@ -2,48 +2,92 @@
 #include <string>
 using namespace std;
 
+// ---------| Inheritance (Наследование) |---------
 
-/* Наследование: Список инициализации (Initializer list) */
 
-struct Log {
-  Log(string name) : n(name) {
-    cout << "+ " << n << endl;
-  }
+/*
 
-  ~Log() {
-    cout << "- " << n << endl;
-  }
+    Чтобы защитить поля класса от случайной модификации вне класса
+    1. Можно объявить поле с помощью protected
+       - Тогда доступ к полю смогут иметь только наследники класса
+    2. Можно объявить поле через const (список инициализации)
+       - Поле нельзя будет изменить на протяжении жизни объекта
+       - Поле нужно будет проинициализирвоать при создании объекта
 
-  const string n;
-};
+       Список инициализация для способа 2:
+
+       ParentClass(int v1, int v2) : Var1(v1), Var2(v2) { ... } - конструктор родителя
+       ChildClass() : ParentClass(v1, v2) { ... } - конструктор ребенка
+
+*/
 
 struct Fruit {
-  Fruit(const string type)
-    : l(type + " (Fruit)") {}
-  const string type = "fruit";
-  Log l;
+  int health = 0;
+  string type = "fruit";
 };
 
-struct Apple : public Fruit { // наследование (публичное)
-  Apple(const string& type)
-    : Fruit(type)
-    , l(type) {}
-  Log l;
-};
-
-class AppleTree {
-public:
-  AppleTree(const string&  type)
-    : type(type)
-    , a1(type + "a1")
-    , a2(type + "a2") {
+struct Apple : public Fruit {     // наследование (публичное)
+  Apple() {                       // добавили конструктор после создания наследования
+    health = 10;
+    type = "apple";               // для идентификация фрукта
   }
-  string type;
-  Apple a1;
-  Apple a2;
 };
+
+struct Orange : public Fruit {    // наследование (публичное)
+  Orange() {
+    health = 5;
+    type = "orange";
+  }
+};
+
+struct Pineapple : public Fruit { // наследование (публичное)
+  Pineapple() {
+    health = 15;
+    type = "pineapple";
+  }
+};
+
+// 2ой способ защиты полей родительского класса
+class Animal {
+public:
+  // объявляем конструктор у родительского класса
+  Animal(const string& t = "animal") : type(t) {}  // используем список инициализации
+  void Eat(const Fruit& f) {
+    cout << type << " eats " << f.type << ". " << f.health << "hp." << endl;
+  }
+  void Voice(const string& v) {
+    cout << type << " says: " << v << "-" << v << endl;
+  }
+  const string type = "animal"; // ипсользуем const
+};
+
+class Cat : public Animal { // наследование (публичное)
+public:
+  Cat() : Animal("Cat") {}  // создаем объект через родительский конструктор
+};
+
+
+class Dog : public Animal { // наследование (публичное)
+public:
+  Dog() : Animal("Dog") {}
+};
+
+
+void DoMeal(Animal& a, Fruit& f) {
+  a.Eat(f);
+}
 
 int main() {
-  AppleTree("Tree ");
+  Cat cat;
+  Orange orange;
+  DoMeal(cat, orange);
+
+  Dog dog;
+  Pineapple pineapple;
+  dog.Voice("Uff");
+  dog.Eat(pineapple);
+
   return 0;
+
+
 }
